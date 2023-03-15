@@ -46,7 +46,7 @@
 /* Алтернативний колір іконок */--color-icon-accent:#FFFFFF;
 /* Основний колір фона іконок */--back-icon-primary:#FFFFFF;
 /* Алтернативний колір фона іконок */--back-icon-accent:#2196F3;
-
+/* Колір фона іконок у футері */--back-icon-footer: rgba(256, 256, 256, 0.1);
 
 
 }   
@@ -371,10 +371,14 @@ button{
 .team-card .link:hover,
 .team-card .link:focus{
     outline: none;
-    background-image: url(../images/social-links/ellipse.svg);
+    width: 44px;
+    height: 44px;
+    background-color: var(--back-icon-accent);
+    border-radius: 50%;
 }
 .team-social-link:hover .team-social-link-icon{
-fill:var(--color-icon-accent);
+
+    fill:var(--color-icon-accent);
 }
 .team-social-link:focus .team-social-link-icon{
     outline: none;
@@ -487,7 +491,8 @@ fill:var(--color-icon-accent);
     height: 44px;
     align-items: center;
     justify-content: center;
-    background-image: url(../images/social-links/ellipse-gray.svg);
+    background-color: var(--back-icon-footer);
+    border-radius: 50%;
 }
 .footer-social-link-icon{
     fill: var(--color-icon-accent);
@@ -495,7 +500,10 @@ fill:var(--color-icon-accent);
 .footer-social .link:hover,
 .footer-social .link:focus{
     outline: none;
-    background-image: url(../images/social-links/ellipse.svg);
+    width: 44px;
+    height: 44px;
+    background-color: var(--back-icon-accent);
+    border-radius: 50%;
 }
 
 /* Flexbox сторінки Портфоліо*/
