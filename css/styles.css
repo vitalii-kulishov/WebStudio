@@ -619,6 +619,7 @@ img {
     width: 370px;
     height: 294px;
     position: relative;
+    transition: .5s ease;
 }
 .project-middle {
     transition: .5s ease;
