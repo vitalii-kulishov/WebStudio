@@ -7,6 +7,7 @@
 /* Колір текста для героя*/--color-text-hero:#FFFFFF;
 /* Альтернативний колір текста кнопок */--color-text-button:#FFFFFF;
 /* Колір текста для футера*/--footer-text-link: rgba(255, 255, 255, 0.6);
+/* Колір пояснюючого текста портфоліо при ховері */--color-portfolio-middle:#FFFFFF;
 
 /* ======Палітра для фону====== */
 
@@ -19,6 +20,7 @@
 /* Фон для футера */--back-footer:#2F303A;
 /* Альтернативний колір фону кнопок */--back-alt-button:#2196F3;
 /* Затемнення основного фону при активному модальному вікні */--back-popup:rgba(0, 0, 0, 0.2);
+/* Затемнення на картці портфоліо */--back-portfolio-middle:rgba(33, 150, 243, 0.9);
 
 /* ======Шрифт====== */
 
@@ -74,6 +76,9 @@ button{
     padding: 0;
     cursor: pointer;
 }
+img {
+    pointer-events: none;
+  }
 .link{
     text-decoration: none;
 }
@@ -590,13 +595,18 @@ button{
     width: 370px;
     height: 404px;
     background-color: var(--back-primary);
-    border: 1px solid var(--color-border);
+    outline: 1px solid var(--color-border);
     flex-direction: column;
+    
 }
 .project-card:hover,
 .project-card:focus{
     outline: none;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+.project-card:hover .project-middle
+{
+    opacity: 1;
 }
 .projects{
     display: flex;
@@ -604,6 +614,29 @@ button{
     justify-content: center;
     margin-top: 34px;
     gap: 30px;
+}
+.portfolio-image {
+    width: 370px;
+    height: 294px;
+    position: relative;
+}
+.project-middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--back-portfolio-middle);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.project-middle p{
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--color-portfolio-middle);
+    padding: 63px 24px;
 }
 
 /* Модальне вікно */
@@ -618,7 +651,7 @@ button{
     visibility: hidden;
     overflow-x: hidden;
     overflow-y: auto;
-    transition: all 0.8s ease 0s;
+    /* transition: all 0.8s ease 0s; */
 }      
 .popup:target{
     opacity: 1;
@@ -653,4 +686,5 @@ button{
     height: 100%;
     top: 0;
     left: 0;
+    cursor: auto;
 }
