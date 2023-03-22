@@ -8,7 +8,8 @@
 /* Альтернативний колір текста кнопок */--color-text-button:#FFFFFF;
 /* Колір текста для футера*/--footer-text-link: rgba(255, 255, 255, 0.6);
 /* Колір пояснюючого текста портфоліо при ховері */--color-portfolio-middle:#FFFFFF;
-/* Колір текста позначки вводу даних */--text-popup-label:#757575;
+/* Колір текста ім'я поля вводу даних */--text-popup-label:#757575;
+/* Колір плейсхолдера */--color-text-placeholder:rgba(117, 117, 117, 0.5);
 
 /* ======Палітра для фону====== */
 
@@ -34,9 +35,9 @@
 /* Колір рамки карток */--color-border:#EEEEEE;
 /* Колір рамки хедера */--color-border-header:#ECECEC;
 /* Основний колір рамки введення даних */--border-popup-primary:rgba(33, 33, 33, 0.2);
-/* Альтернативний колір рамки введення даних */--back-popup-accent:#2196F3;
+/* Альтернативний колір рамки введення даних */--border-popup-accent:#2196F3;
 
-/* Палітра для тіні */
+/* ======Палітра для тіні====== */
 
 /* Колір тіні кнопки героя*/--color-shadow-hero:rgba(0, 0, 0, 0.15);
 /* Тінь1 для фільтра портфоліо*/--color-shadow-1:rgba(0, 0, 0, 0.1);
@@ -46,7 +47,7 @@
 /* Тінь2 для картки команди */--color-shadow-team2:rgba(0, 0, 0, 0.14);
 /* Тінь3 для картки команди */--color-shadow-team3:rgba(0, 0, 0, 0.2);
 
-/* Палітра для іконок */
+/* ======Палітра для іконок====== */
 
 /* Основний колір іконок */--color-icon-primary:#AFB1B8;
 /* Алтернативний колір іконок */--color-icon-accent:#FFFFFF;
@@ -59,7 +60,10 @@
 }   
 
 /* Загальні властивості */
-*{margin-block: 0;}
+*, *::before,
+*::after {
+    box-sizing: border-box;
+    margin-block: 0;}
 body{
     color:var(--color-text-primary);
     background: var(--back-primary);
@@ -686,17 +690,15 @@ img {
     position: absolute;
     right: 8px;
     top: 8px;
-    width: 30px;
     height: 30px;
     border: 1px solid var(--color-popup-close);
     border-radius: 50%;
 }
 .popup-close-x{
-    fill: var(--color-text-accent);
+    fill: var(--color-text-primary);
 }
-.popup-close:hover,
-.popup-close:focus .popup-close-x{
-    fill: var(--back-popup-accent);
+.popup-close:hover .popup-close-x{
+    fill: var(--border-popup-accent);
 }
 .popup-area{
     position: absolute;
@@ -711,71 +713,112 @@ img {
     line-height: 1,17;
     letter-spacing: 0.01em;
     color: var(--text-popup-label);
-    margin-bottom: 4px;
 }
-.popup-input{
-    border: none;
-    outline: none;
-    font-size: 16px;
-    color: var(--color-text-primary);
-}
+/* Оформлення полей для введення даних */
 .popup-user-data{
-    display: flex;
-    align-items: center;
+    position: relative;
+   
+}
+.popup-input,
+.popup-coment{
     border: 1px solid var(--border-popup-primary);
     border-radius: 4px;
-    margin-bottom: 10px;
+    margin: 4px 0 10px 0;
+}
+.popup-input{
+    padding: 0 0 0 2.625rem;
+    width: 100%;
+    display: block;
+    font-size: 1rem;
+    line-height: 2.5rem;
+    color: var(--color-text-primary);
 }
 .popup-input-icon{
-    margin: 11px 12px;
+    width: 1.125rem;
+    position: absolute;
+    top: 25%;
+    left: 0.75rem;
     fill: var(--color-text-primary);
 }
+.popup-input:hover,
+.popup-input:focus{
+    outline: none;
+    border-color: var(--border-popup-accent);
+}
 .popup-user-data:hover .popup-input-icon{
-    fill: var(--back-popup-accent);
+    fill: var(--border-popup-accent);
 }
-.popup-user-data:focus .popup-input-icon{
-    fill: var(--back-popup-accent);
+.popup-user-data:active .popup-input-icon{
+    fill: var(--border-popup-accent);
 }
-.popup-user-data:hover{
-    border-color: var(--back-popup-accent);
-}
+/* Коментар  */
 .popup-coment{
     resize: none;
     overflow-x: hidden;
     overflow-y: auto;
-    border: none;
     padding: 12px 16px;
+    font-family: inherit;
     font-size: 12px;
-    line-height: 1,17;
+    line-height: calc(14/12);
     letter-spacing: 0.01em;
 }
+.popup-coment::placeholder{
+    color: var(--color-text-placeholder);
+}
+.popup-coment:hover,
 .popup-coment:focus{
     outline: none;
+    border-color: var(--border-popup-accent);
 }
-.popup-check{
-    width: 16px;
-    height: 15px;
-    margin-right: 7px;
-}
+/* Чекбокс */
 .popup-content .popup-acc-conditions{
     font-size: 14px;
     line-height: 1,71;
     color: var(--text-popup-label);
 }
 .popup-conditions{
+    margin-left: 0.3em;
     color: var(--color-text-accent);
 }
 .popup-checkbox{
-    display: flex;
     margin:20px 0 30px;
-    justify-content: center;
-    align-items: flex-start;
 }
+.popup-check{
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.popup-check+label {
+    display: flex;
+    user-select: none;
+    align-items: center;
+    justify-content: center;
+}
+.popup-check+label::before {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 0.94rem;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 2px solid var(--color-text-primary);
+    border-radius: 0.14em;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.popup-check:checked+label::before {
+    border:none;
+    background-color: var(--border-popup-accent);
+    background-image: url("data:image/svg+xml,%3Csvg width='13' height='10' viewBox='0 0 13 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.95703 4.75166L1.88825 4.68604L1.81923 4.75141L0.93123 5.59258L0.854858 5.66492L0.930974 5.73753L4.42671 9.07236L4.49574 9.1382L4.56476 9.07236L12.069 1.91352L12.1449 1.84116L12.069 1.76881L11.1873 0.927644L11.1183 0.861826L11.0493 0.927611L4.49577 7.17353L1.95703 4.75166Z' fill='white' stroke='white' stroke-width='0.2'/%3E%3C/svg%3E");
+  }
+/* Кнопка Відправити */
 .popup-button{
     padding: 10px 52px;
     border: none;
     background-color: var(--back-button-hero);
     border-radius: 4px;
+    box-shadow: 0px 4px 4px var(--color-shadow-hero);
     color: var(--color-text-button);
     font-weight: 700;
     font-size: 16px;
@@ -787,5 +830,5 @@ img {
 .popup-button:hover,
 .popup-button:focus{
     outline: none;
-    background-color: var(--back-alt-hero);
+    background-color: var(--back-alt-hero); 
 }
