@@ -9,7 +9,8 @@
 /* Колір текста для футера*/--footer-text-link: rgba(255, 255, 255, 0.6);
 /* Колір пояснюючого текста портфоліо при ховері */--color-portfolio-middle:#FFFFFF;
 /* Колір текста ім'я поля вводу даних */--text-popup-label:#757575;
-/* Колір плейсхолдера */--color-text-placeholder:rgba(117, 117, 117, 0.5);
+/* Колір плейсхолдера у модальному вікні*/--color-text-placeholder:rgba(117, 117, 117, 0.5);
+/* Колір текста вводу у футері */--footer-input-sending: rgba(255, 255, 255, 0.6);
 
 /* ======Палітра для фону====== */
 
@@ -36,6 +37,7 @@
 /* Колір рамки хедера */--color-border-header:#ECECEC;
 /* Основний колір рамки введення даних */--border-popup-primary:rgba(33, 33, 33, 0.2);
 /* Альтернативний колір рамки введення даних */--border-popup-accent:#2196F3;
+/* Колір рамки для розсилки */--border-sending: rgba(255, 255, 255, 0.3);
 
 /* ======Палітра для тіні====== */
 
@@ -275,11 +277,15 @@ img {
     border-radius: 4px;
     margin-bottom: 200px;
 }
-    .hero-button:hover,
-    .hero-button:focus{
+.hero-button:hover,
+.hero-button:focus,
+.sending-button:hover,
+.sending-button:focus,
+.popup-button:hover,
+.popup-button:focus{
+    outline: none;
     background: var(--back-alt-hero)
 }
-
 
 /* Особливості */
 .features{
@@ -453,16 +459,16 @@ img {
 
 /* Футер */
 .footer{
-    display: flex;
-    flex-direction: row;
+    display: inline-flex;
     background: var(--back-footer);
     width: 1600px;
     height: 252px;
+    justify-content: space-between;
+    padding: 0 215px 0 215px;
 }
 .footer-contacts{
     width: 231px;
     margin-top: 60px;
-    margin-left: 215px;
 }
 .footer .footer-address{
     font-style: normal;
@@ -493,9 +499,11 @@ img {
 .footer-social{
     width: 206px;
     height: 80px;
-    text-align: center;
+    margin-top: 72px;
+    margin-right: 46px;
 }
-.footer-invitation-social{
+.footer-invitation-social,
+.sending-sub{
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -503,10 +511,6 @@ img {
     letter-spacing: 0.03em;
     text-transform: uppercase;
     color: var(--color-icon-accent);
-}
-.footer-social{
-    margin-top: 72px;
-    margin-left: 70px;
 }
 .container-footer-social-links{
     display: flex;
@@ -532,6 +536,48 @@ img {
 .footer-social .link:focus{
     outline: none;
     background-color: var(--back-icon-accent);
+}
+
+
+/* Футер Розсилка */
+.footer-sending{
+    margin-top: 72px;
+}
+.sending-container{
+    display: inline-flex;
+    margin-top: 20px;
+    align-items: center;
+}
+.sending-input {
+    width: 358px;
+    font-size: 16px;
+    background-color: var(--back-footer);
+    color: var(--footer-input-sending);
+    padding: 0.95em 1em;
+    border: 1px solid var(--border-sending);
+    border-radius: 4px;
+}
+.sending-input:focus{
+    outline: none;
+}
+.sending-button{
+    width: 12.5rem;
+    height: 3.125rem;
+    display: flex;
+    border: none;
+    background-color: var(--back-button-hero);
+    border-radius: 4px;
+    color: var(--color-text-button);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: calc(30/16);
+    letter-spacing: 0.06em;
+    margin-left: 0.75rem;
+    justify-content: center;
+    align-items: center;
+}
+.sending-icon{
+    margin-left: 0.625em;
 }
 
 /* Flexbox сторінки Портфоліо*/
@@ -657,7 +703,6 @@ img {
     left: 0;
     opacity: 0;
     visibility: hidden;
-
     /* transition: all 0.8s ease 0s; */
     min-height: 100%;
     display: flex;
@@ -814,7 +859,8 @@ img {
   }
 /* Кнопка Відправити */
 .popup-button{
-    padding: 10px 52px;
+    width: 12.5rem;
+    height: 3.125rem;
     border: none;
     background-color: var(--back-button-hero);
     border-radius: 4px;
@@ -826,9 +872,4 @@ img {
     letter-spacing: 0.06em;
     display: block;
     margin: 0 auto;
-}
-.popup-button:hover,
-.popup-button:focus{
-    outline: none;
-    background-color: var(--back-alt-hero); 
 }
