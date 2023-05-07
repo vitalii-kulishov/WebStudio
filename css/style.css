@@ -4,8 +4,6 @@
 
 /* --------------- Стилізація сторінки ------------- */
 .page {
-   min-height: 100%;
-   overflow: hidden;
    display: flex;
    flex-direction: column;
    overflow: hidden;
@@ -23,7 +21,6 @@
    padding: 0 15px;
    margin: auto;
    display: flex;
-   overflow-y: auto;
 }
 
 /* ---------------- Хедер ---------------- */
@@ -35,7 +32,7 @@
    height: var(--height-header);
    z-index: 2;
    background-color: var(--back-primary);
-   border-bottom: 1px solid var(--color-border-header);
+   box-shadow: inset 0 -1px 0 var(--color-border-header);
 }
 
 .header__container {
@@ -368,7 +365,7 @@
 }
 
 .portfolio__item {
-   flex: 0 1 370px;
+   max-width: 370px;
    border: 1px solid var(--color-border);
    overflow: hidden;
 }
@@ -384,7 +381,7 @@
 
 .portfolio__img {
    position: relative;
-   max-width: 100%;
+   width: 100%;
    height: auto;
    object-fit: cover;
    object-position: center;
@@ -591,13 +588,15 @@
    left: 0;
    opacity: 0;
    visibility: hidden;
+   height: 100%;
    width: 100%;
    background-color: var(--back-popup);
    transition: 0.8s;
-   min-height: 100%;
    display: flex;
    align-items: center;
    justify-content: center;
+   padding: 0 15px;
+   overflow-y: auto;
    -webkit-overflow-scrolling: touch;
    z-index: 5;
 }
@@ -790,7 +789,8 @@
    }
 
    .portfolio__item {
-      flex: 0 1 354px;
+      max-width: 354px;
+      width: 100%;
    }
 
    .footer__container {
@@ -837,4 +837,26 @@
       padding: 40px 15px;
    }
 
+}
+
+@media (width<=767px) {
+   .features__inner {
+      max-width: 600px;
+      width: 100%;
+   }
+
+   .team__inner {
+      width: 100%;
+   }
+
+   .portfolio__item {
+      max-width: 600px;
+      width: 100%;
+   }
+}
+
+@media (height<=600px) {
+   .popup {
+      align-items: start;
+   }
 }
