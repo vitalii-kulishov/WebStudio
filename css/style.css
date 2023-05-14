@@ -362,12 +362,12 @@
    flex-wrap: wrap;
    gap: 30px;
    justify-content: center;
+   overflow: hidden;
 }
 
 .portfolio__item {
    max-width: 370px;
    border: 1px solid var(--color-border);
-   overflow: hidden;
 }
 
 .portfolio__bottom {
@@ -377,6 +377,7 @@
 .portfolio__picture {
    position: relative;
    max-width: 100%;
+   overflow: hidden;
 }
 
 .portfolio__img {
@@ -424,11 +425,24 @@
    box-shadow: var(--shadow-card-portfolio);
 }
 
+.portfolio__item:hover .portfolio__img {
+   transform: scale(1.2);
+   transition: 0.5s;
+}
+
 .portfolio__item:hover .portfolio-middle,
 .portfolio__item:focus .portfolio-middle {
    opacity: 1;
    visibility: visible;
 }
+
+.fa {
+   color: black;
+   font-size: 20px;
+   height: 20px;
+   width: 20px;
+}
+
 
 /* ---------------- Футер ---------------- */
 .footer {
@@ -690,13 +704,18 @@
 }
 
 .popup__input-container:hover .popup__input,
-.popup__coment-container:hover,
+.popup__coment:hover,
+.label__checkbox:hover .check,
 .popup__input:focus,
 .popup__coment:focus {
    border-color: var(--border-popup-accent);
 }
 
 .popup__input-container:hover .popup__icon {
+   fill: var(--border-popup-accent);
+}
+
+.popup__input:focus~svg {
    fill: var(--border-popup-accent);
 }
 
